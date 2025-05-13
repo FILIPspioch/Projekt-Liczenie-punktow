@@ -7,6 +7,7 @@ const player_two_text = document.querySelector("#player_two_name");
 const player_one_button = document.querySelector(".player_one");
 const player_two_button = document.querySelector(".player_two");
 const done_button = document.querySelector("#done");
+const reset_button = document.querySelector("#reset_score");
 
 let p1_counter_text = document.querySelector("#p1_counter");
 let p2_counter_text = document.querySelector("#p2_counter");
@@ -35,3 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
   p1_counter_text.textContent = p1_counter;
   p2_counter_text.textContent = p2_counter;
 });
+
+reset_button.addEventListener("click", () => {
+  localStorage.setItem("p1_points", 0);
+  localStorage.setItem("p2_points", 0);
+
+  p1_counter = localStorage.getItem("p1_points");
+  p2_counter = localStorage.getItem("p2_points");
+  render();
+});
+
+function render() {
+  p1_counter_text.textContent = p1_counter;
+  p2_counter_text.textContent = p2_counter;
+}
